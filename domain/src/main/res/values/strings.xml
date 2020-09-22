@@ -1,0 +1,9 @@
+<resources>
+    <string name="text_file">Text file</string>
+    <string name="pdf_file">PDF document</string>
+    <string name="microsoft_word_document">Microsoft Word document</string>
+    <string name="microsoft_excel_document">Microsoft Excel document</string>
+    <string name="html_text">HTML text</string>
+    <string name="file">File</string>
+    <string name="text">Text</string>
+</resources>

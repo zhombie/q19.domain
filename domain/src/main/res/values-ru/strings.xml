@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="text_file">Текстовый файл</string>
+    <string name="pdf_file">PDF документ</string>
+    <string name="microsoft_word_document">Документ Microsoft Word</string>
+    <string name="microsoft_excel_document">Документ Microsoft Excel</string>
+    <string name="html_text">HTML текст</string>
+    <string name="file">Файл</string>
+    <string name="text">Текст</string>
+</resources>
