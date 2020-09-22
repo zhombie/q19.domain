@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package kz.q19.domain
 
 import android.os.Parcelable
@@ -124,7 +126,13 @@ data class Message constructor(
     }
 
     enum class Action(val value: String) {
-        FINISH("finish");
+        CALL_ACCEPT("call_accept"),
+        CALL_REDIAL("call_redial"),
+        CALL_REDIRECT("call_redirect"),
+        CHAT_TIMEOUT("chat_timeout"),
+        FINISH("finish"),
+        REDIRECT("redirect"),
+        OPERATOR_DISCONNECT("operator_disconnect");
 
         override fun toString(): String {
             return value
