@@ -6,6 +6,7 @@ import android.os.Parcelable
 import androidx.annotation.StringRes
 import kotlinx.android.parcel.Parcelize
 import kz.q19.domain.R
+import kz.q19.utils.file.Extension
 
 @Parcelize
 data class Attachment constructor(
