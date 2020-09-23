@@ -1,10 +1,11 @@
 @file:Suppress("unused")
 
-package kz.q19.domain
+package kz.q19.domain.model
 
 import android.os.Parcelable
 import androidx.annotation.DrawableRes
 import kotlinx.android.parcel.Parcelize
+import kz.q19.domain.R
 
 @Parcelize
 data class Configs constructor(

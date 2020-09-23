@@ -1,12 +1,12 @@
 @file:Suppress("unused")
 
-package kz.q19.domain
+package kz.q19.domain.model
 
 import android.os.Parcelable
 import android.text.Spanned
 import android.text.format.DateFormat
 import kotlinx.android.parcel.Parcelize
-import kz.q19.domain.webrtc.WebRTC
+import kz.q19.domain.model.webrtc.WebRTC
 import kz.q19.utils.html.HTMLCompat
 import java.util.*
 

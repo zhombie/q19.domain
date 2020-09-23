@@ -1,6 +1,8 @@
 @file:Suppress("unused")
 
-package kz.q19.domain
+package kz.q19.domain.model
+
+import kz.q19.utils.file.Extension
 
 enum class Extensions(val values: Set<Extension>) {
     IMAGE(setOf(Extension.JPG, Extension.JPEG, Extension.PNG)),

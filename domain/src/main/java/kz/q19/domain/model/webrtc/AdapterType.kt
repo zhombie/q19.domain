@@ -1,6 +1,6 @@
 @file:Suppress("unused")
 
-package kz.q19.domain.webrtc
+package kz.q19.domain.model.webrtc
 
 enum class AdapterType(val bitMask: Int) {
     UNKNOWN(0),

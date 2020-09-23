@@ -1,12 +1,12 @@
 @file:Suppress("unused")
 
-package kz.q19.domain
+package kz.q19.domain.model
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class RatingButton(
+data class RatingButton constructor(
     val title: String?,
     val payload: String? = null
 ) : Parcelable {

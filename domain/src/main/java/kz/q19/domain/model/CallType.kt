@@ -1,6 +1,6 @@
 @file:Suppress("unused")
 
-package kz.q19.domain
+package kz.q19.domain.model
 
 enum class CallType {
     TEXT,

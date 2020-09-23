@@ -1,12 +1,12 @@
 @file:Suppress("unused")
 
-package kz.q19.domain.webrtc
+package kz.q19.domain.model.webrtc
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class WebRTC(
+data class WebRTC constructor(
     val type: Type,
     val sdp: String? = null,
     val id: String? = null,
