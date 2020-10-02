@@ -24,6 +24,15 @@ data class I18NString(
     val en: String? = null
 ) : Parcelable {
 
+    companion object {
+        val NOT_FOUND: I18NString
+            get() = I18NString(
+                en = "Nothing found :(",
+                ru = "Ничего не найдено :(",
+                kk = "Ештеңе табылмады :("
+            )
+    }
+
     fun get(language: Language? = null): String? {
         return when (language?.key ?: Language.from(Locale.getDefault()).key) {
             Language.KAZAKH.key -> kk ?: kz

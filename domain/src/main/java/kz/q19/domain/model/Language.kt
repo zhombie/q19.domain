@@ -4,7 +4,7 @@ package kz.q19.domain.model
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
-import kz.q19.utils.enum.findEnumBy
+import kz.q19.utils.enums.findEnumBy
 import java.util.*
 
 @Parcelize
