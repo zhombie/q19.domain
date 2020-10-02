@@ -3,30 +3,34 @@
 package kz.q19.domain.model
 
 import android.os.Parcelable
+import androidx.annotation.Keep
+import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
-import kotlinx.android.parcel.RawValue
-import kz.q19.utils.json.getStringOrNull
-import kz.q19.utils.json.json
-import org.json.JSONObject
+import java.util.*
 
+@Keep
 @Parcelize
-data class I18NString constructor(
-    val value: @RawValue JSONObject
+data class I18NString(
+    @SerializedName("kk")
+    val kk: String? = null,
+
+    @SerializedName("kz")
+    val kz: String? = null,
+
+    @SerializedName("ru")
+    val ru: String? = null,
+
+    @SerializedName("en")
+    val en: String? = null
 ) : Parcelable {
 
-    companion object {
-        val NOT_FOUND: I18NString
-            get() = I18NString(
-                value = json {
-                    put(Language.Key.EN.value, "Nothing found :(")
-                    put(Language.Key.RU.value, "Ничего не найдено :(")
-                    put(Language.Key.KK.value, "Ештеңе табылмады :(")
-                }
-            )
-    }
-
-    fun get(language: Language = Language.DEFAULT): String? {
-        return value.getStringOrNull(language.key)
+    fun get(language: Language? = null): String? {
+        return when (language?.key ?: Language.from(Locale.getDefault()).key) {
+            Language.KAZAKH.key -> kk ?: kz
+            Language.RUSSIAN.key -> ru
+            Language.ENGLISH.key -> en
+            else -> ru
+        }
     }
 
 }
