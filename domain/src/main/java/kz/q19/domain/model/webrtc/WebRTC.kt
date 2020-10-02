@@ -3,8 +3,10 @@
 package kz.q19.domain.model.webrtc
 
 import android.os.Parcelable
+import androidx.annotation.Keep
 import kotlinx.android.parcel.Parcelize
 
+@Keep
 @Parcelize
 data class WebRTC constructor(
     val type: Type,
@@ -24,17 +26,17 @@ data class WebRTC constructor(
         HANGUP("hangup");
 
         companion object {
-            fun by(type: SessionDescription.Type): Type {
+            fun by(type: WebRTCSessionDescription.Type): Type {
                 return when (type) {
-                    SessionDescription.Type.OFFER -> OFFER
-                    SessionDescription.Type.ANSWER -> ANSWER
+                    WebRTCSessionDescription.Type.OFFER -> OFFER
+                    WebRTCSessionDescription.Type.ANSWER -> ANSWER
                 }
             }
 
-            fun by(type: String): SessionDescription.Type? {
+            fun by(type: String): WebRTCSessionDescription.Type? {
                 return when (type) {
-                    OFFER.value -> SessionDescription.Type.OFFER
-                    ANSWER.value -> SessionDescription.Type.ANSWER
+                    OFFER.value -> WebRTCSessionDescription.Type.OFFER
+                    ANSWER.value -> WebRTCSessionDescription.Type.ANSWER
                     else -> null
                 }
             }

@@ -2,8 +2,10 @@
 
 package kz.q19.domain.model
 
+import androidx.annotation.Keep
 import kz.q19.utils.file.Extension
 
+@Keep
 enum class Extensions(val values: Set<Extension>) {
     IMAGE(setOf(Extension.JPG, Extension.JPEG, Extension.PNG)),
     AUDIO(setOf(Extension.MP3, Extension.WAV, Extension.OPUS, Extension.OGG)),

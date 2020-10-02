@@ -3,10 +3,12 @@
 package kz.q19.domain.model
 
 import android.os.Parcelable
+import androidx.annotation.Keep
 import kotlinx.android.parcel.Parcelize
 import kz.q19.utils.enums.findEnumBy
 import java.util.*
 
+@Keep
 @Parcelize
 data class Language constructor(
     val key: String,

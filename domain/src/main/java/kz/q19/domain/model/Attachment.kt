@@ -3,11 +3,13 @@
 package kz.q19.domain.model
 
 import android.os.Parcelable
+import androidx.annotation.Keep
 import androidx.annotation.StringRes
 import kotlinx.android.parcel.Parcelize
 import kz.q19.domain.R
 import kz.q19.utils.file.Extension
 
+@Keep
 @Parcelize
 data class Attachment constructor(
     val title: String? = null,

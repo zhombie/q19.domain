@@ -3,8 +3,10 @@
 package kz.q19.domain.model
 
 import android.os.Parcelable
+import androidx.annotation.Keep
 import kotlinx.android.parcel.Parcelize
 
+@Keep
 @Parcelize
 data class Form constructor(
     val id: Long,
@@ -14,6 +16,7 @@ data class Form constructor(
     val fields: List<Field> = emptyList()
 ) : Parcelable {
 
+    @Keep
     @Parcelize
     data class Field constructor(
         val id: Long,

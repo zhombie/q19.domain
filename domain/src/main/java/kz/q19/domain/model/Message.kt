@@ -5,11 +5,13 @@ package kz.q19.domain.model
 import android.os.Parcelable
 import android.text.Spanned
 import android.text.format.DateFormat
+import androidx.annotation.Keep
 import kotlinx.android.parcel.Parcelize
 import kz.q19.domain.model.webrtc.WebRTC
 import kz.q19.utils.html.HTMLCompat
 import java.util.*
 
+@Keep
 @Parcelize
 data class Message constructor(
     val id: String? = null,

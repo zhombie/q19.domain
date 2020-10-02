@@ -3,10 +3,12 @@
 package kz.q19.domain.model.webrtc
 
 import android.os.Parcelable
+import androidx.annotation.Keep
 import kotlinx.android.parcel.Parcelize
 
+@Keep
 @Parcelize
-data class SessionDescription constructor(
+data class WebRTCSessionDescription constructor(
     val type: Type,
     val description: String
 ) : Parcelable {
