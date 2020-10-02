@@ -21,7 +21,7 @@ data class CallScope(
     val title: I18NString,
 
     @SerializedName("parent_id")
-    val parentId: Long = -1L,
+    val parentId: Long = NO_PARENT_ID,
 
     @SerializedName("chat_type")
     val chatType: ChatType? = null,
@@ -32,6 +32,10 @@ data class CallScope(
     @SerializedName("details")
     val details: Details? = null
 ) : Parcelable {
+
+    companion object {
+        const val NO_PARENT_ID = 0L
+    }
 
     enum class Type(val value: String) {
         @SerializedName("folder")

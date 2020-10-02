@@ -11,7 +11,7 @@ import kz.q19.utils.file.Extension
 
 @Keep
 @Parcelize
-data class Attachment constructor(
+open class Attachment constructor(
     val title: String? = null,
     val extension: Extension? = null,
     val type: Type? = null,
@@ -39,5 +39,17 @@ data class Attachment constructor(
         } else {
             -1
         }
+
+    override fun toString(): String {
+        return super.toString()
+    }
+
+    override fun hashCode(): Int {
+        return super.hashCode()
+    }
+
+    override fun equals(other: Any?): Boolean {
+        return super.equals(other)
+    }
 
 }

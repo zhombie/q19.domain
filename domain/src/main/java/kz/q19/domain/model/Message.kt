@@ -18,7 +18,7 @@ data class Message constructor(
     val type: Type,
     val text: String? = null,
     val replyMarkup: ReplyMarkup? = null,
-    val attachments: List<FileAttachment>? = null,
+    val attachments: List<Attachment>? = null,
     val date: Calendar = now(),
 
     val category: Category? = null,
@@ -54,9 +54,12 @@ data class Message constructor(
         type: Type,
         text: String? = null,
         replyMarkup: ReplyMarkup? = null,
-        attachments: List<FileAttachment>? = null,
+        attachments: List<Attachment>? = null,
         timestamp: Long? = null,
-        category: Category? = null
+        category: Category? = null,
+        form: Form? = null,
+        webRTC: WebRTC? =null,
+        action: Action? = null
     ) : this(
         id = id,
         type = type,
@@ -65,8 +68,9 @@ data class Message constructor(
         attachments = attachments,
         date = timestamp?.let { fromTimestamp(it) } ?: now(),
         category = category,
-        webRTC = null,
-        action = null
+        form = form,
+        webRTC = webRTC,
+        action = action
     )
 
     val time: String
