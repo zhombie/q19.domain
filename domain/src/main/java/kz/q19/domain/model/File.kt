@@ -2,10 +2,13 @@
 
 package kz.q19.domain.model
 
+import android.net.Uri
 import android.os.Parcelable
 import androidx.annotation.Keep
 import kotlinx.android.parcel.IgnoredOnParcel
 import kotlinx.android.parcel.Parcelize
+import kz.q19.utils.enums.findEnumBy
+import kz.q19.utils.file.Extension
 import java.io.File
 
 @Keep
@@ -21,8 +24,23 @@ data class File constructor(
         COMPLETED
     }
 
+    val name: String
+        get() = file.name
+
+    val nameWithoutExtension: String
+        get() = file.nameWithoutExtension
+
+    val extension: Extension?
+        get() = findEnumBy { it.value == file.extension }
+
     val path: String
+        get() = file.path
+
+    val absolutePath: String
         get() = file.absolutePath
+
+    val uri: Uri
+        get() = Uri.fromFile(file)
 
     @IgnoredOnParcel
     var progress: Int = 0
