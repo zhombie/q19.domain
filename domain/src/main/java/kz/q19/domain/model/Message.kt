@@ -98,7 +98,7 @@ data class Message constructor(
             val url: String? = null
         ) : Parcelable
 
-        fun getAllButtons(): MutableList<Button> {
+        fun getAllButtons(): List<Button> {
             val buttons = mutableListOf<Button>()
             rows.forEach {
                 it.forEach { button ->
