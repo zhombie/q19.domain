@@ -1,6 +1,6 @@
 package kz.q19.domain.model
 
-fun FileAttachment.convert(): Form.Field.Type {
+fun Attachment.convert(): Form.Field.Type {
     return when (type) {
         Attachment.Type.IMAGE -> Form.Field.Type.IMAGE
         Attachment.Type.AUDIO -> Form.Field.Type.AUDIO

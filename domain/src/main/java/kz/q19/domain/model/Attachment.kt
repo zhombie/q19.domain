@@ -11,17 +11,19 @@ import kz.q19.utils.file.Extension
 
 @Keep
 @Parcelize
-open class Attachment constructor(
+data class Attachment constructor(
     val title: String? = null,
     val extension: Extension? = null,
     val type: Type? = null,
-    val urlPath: String? = null
+    val urlPath: String? = null,
+    var file: File? = null
 ) : Parcelable {
 
     enum class Type(val key: String) {
         IMAGE("image"),
         AUDIO("audio"),
         VIDEO("video"),
+        DOCUMENT("document"),
         FILE("file")
     }
 

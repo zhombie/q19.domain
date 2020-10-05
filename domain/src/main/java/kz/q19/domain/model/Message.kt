@@ -18,6 +18,7 @@ data class Message constructor(
     val type: Type,
     val text: String? = null,
     val replyMarkup: ReplyMarkup? = null,
+    val media: Media? = null,
     val attachments: List<Attachment>? = null,
     val date: Calendar = now(),
 
@@ -54,6 +55,7 @@ data class Message constructor(
         type: Type,
         text: String? = null,
         replyMarkup: ReplyMarkup? = null,
+        media: Media? = null,
         attachments: List<Attachment>? = null,
         timestamp: Long? = null,
         category: Category? = null,
@@ -65,6 +67,7 @@ data class Message constructor(
         type = type,
         text = text?.trim(),
         replyMarkup = replyMarkup,
+        media = media,
         attachments = attachments,
         date = timestamp?.let { fromTimestamp(it) } ?: now(),
         category = category,
