@@ -24,6 +24,10 @@ data class File constructor(
         COMPLETED
     }
 
+    fun get(): File {
+        return file
+    }
+
     val name: String
         get() = file.name
 
