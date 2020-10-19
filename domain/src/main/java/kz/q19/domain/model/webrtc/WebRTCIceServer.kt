@@ -17,8 +17,8 @@ data class WebRTCIceServer(
     val urls: String?,
 
     @SerializedName("username")
-    val username: String? = null,
+    val username: String? = "",
 
     @SerializedName("credential")
-    val credential: String? = null
+    val credential: String? = ""
 ) : Parcelable
