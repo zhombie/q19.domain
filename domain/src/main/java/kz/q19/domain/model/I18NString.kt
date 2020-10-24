@@ -10,7 +10,7 @@ import java.util.*
 
 @Keep
 @Parcelize
-data class I18NString(
+data class I18NString constructor(
     @SerializedName("kk")
     val kk: String? = null,
 

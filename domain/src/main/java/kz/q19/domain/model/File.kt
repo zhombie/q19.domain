@@ -17,6 +17,7 @@ data class File constructor(
     private val file: File
 ) : Parcelable {
 
+    @Keep
     enum class DownloadStatus {
         NONE,
         PENDING,

@@ -19,6 +19,7 @@ data class Attachment constructor(
     var file: File? = null
 ) : Parcelable {
 
+    @Keep
     enum class Type(val key: String) {
         IMAGE("image"),
         AUDIO("audio"),

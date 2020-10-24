@@ -89,11 +89,13 @@ data class Message constructor(
             }
         }
 
+    @Keep
     @Parcelize
     data class ReplyMarkup constructor(
         val rows: List<List<Button>> = emptyList()
     ) : Parcelable {
 
+        @Keep
         @Parcelize
         data class Button constructor(
             val text: String,
@@ -121,6 +123,7 @@ data class Message constructor(
 
     }
 
+    @Keep
     enum class Type {
         OUTGOING,
         INCOMING,
@@ -134,6 +137,7 @@ data class Message constructor(
         RESPONSE
     }
 
+    @Keep
     enum class Action(val value: String) {
         CALL_ACCEPT("call_accept"),
         CALL_REDIAL("call_redial"),

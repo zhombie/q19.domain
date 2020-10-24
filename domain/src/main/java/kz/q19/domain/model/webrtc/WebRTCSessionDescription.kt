@@ -13,6 +13,7 @@ data class WebRTCSessionDescription constructor(
     val description: String
 ) : Parcelable {
 
+    @Keep
     enum class Type {
         OFFER,
         ANSWER

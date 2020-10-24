@@ -7,7 +7,7 @@ import kotlinx.android.parcel.Parcelize
 
 @Keep
 @Parcelize
-data class CallScope(
+data class CallScope constructor(
     @SerializedName("id")
     val id: Long,
 
@@ -37,6 +37,7 @@ data class CallScope(
         const val NO_PARENT_ID = 0L
     }
 
+    @Keep
     enum class Type(val value: String) {
         @SerializedName("folder")
         FOLDER("folder"),
@@ -45,6 +46,7 @@ data class CallScope(
         LINK("link")
     }
 
+    @Keep
     enum class Action(val value: String) {
         @SerializedName("audio_call")
         AUDIO_CALL("audio_call"),
@@ -53,6 +55,7 @@ data class CallScope(
         VIDEO_CALL("video_call")
     }
 
+    @Keep
     enum class ChatType(val value: String) {
         @SerializedName("audio")
         AUDIO("audio"),

@@ -7,7 +7,7 @@ import kotlinx.android.parcel.Parcelize
 
 @Keep
 @Parcelize
-data class Booleans(
+data class Booleans constructor(
     @SerializedName("chatbot_enabled")
     val isChatBotEnabled: Boolean = false,
 

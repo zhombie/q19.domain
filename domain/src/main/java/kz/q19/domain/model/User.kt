@@ -6,11 +6,13 @@ import android.os.Parcelable
 import androidx.annotation.Keep
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
-import kz.q19.domain.model.webrtc.WebRTCIceServer
 
 @Keep
 @Parcelize
-data class IceServersResponse constructor(
-    @SerializedName("ice_servers")
-    val iceServers: List<WebRTCIceServer>? = null
+data class User constructor(
+    @SerializedName("user_id")
+    val userId: Long,
+
+    @SerializedName("token")
+    val token: String
 ) : Parcelable

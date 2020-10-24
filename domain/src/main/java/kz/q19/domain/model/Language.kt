@@ -47,18 +47,21 @@ data class Language constructor(
         }
     }
 
+    @Keep
     enum class Key(val value: String) {
         KK("kk"),
         RU("ru"),
         EN("en")
     }
 
+    @Keep
     enum class Representation(val value: String) {
         KK("Қаз"),
         RU("Рус"),
         EN("Eng")
     }
 
+    @Keep
     enum class ID(val value: Long) {
         KK(2),
         RU(1),

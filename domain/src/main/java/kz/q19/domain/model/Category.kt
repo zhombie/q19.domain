@@ -38,6 +38,7 @@ data class Category constructor(
             }
     }
 
+    @Keep
     @Parcelize
     data class Config(
         val order: Int

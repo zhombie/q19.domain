@@ -7,7 +7,7 @@ import kotlinx.android.parcel.Parcelize
 
 @Keep
 @Parcelize
-data class Configs(
+data class Configs constructor(
     @SerializedName("title")
     val title: String? = null,
 

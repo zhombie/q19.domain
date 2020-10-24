@@ -63,6 +63,7 @@ data class Form constructor(
         val value: String? = null
     ) : Parcelable {
 
+        @Keep
         enum class Type(val value: String) {
             @SerializedName("text")
             TEXT("text"),
@@ -86,6 +87,7 @@ data class Form constructor(
             BOOLEAN("boolean")
         }
 
+        @Keep
         @Parcelize
         data class Configs(
             @SerializedName("must_filled")
