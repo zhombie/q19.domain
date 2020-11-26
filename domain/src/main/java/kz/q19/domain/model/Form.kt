@@ -6,6 +6,7 @@ import android.os.Parcelable
 import androidx.annotation.Keep
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
+import kz.q19.utils.file.Extension
 
 @Keep
 @Parcelize
@@ -52,6 +53,9 @@ data class Form constructor(
 
         @SerializedName("form_id")
         val formId: Long,
+
+        @SerializedName("info")
+        val info: Info? = null,
 
         @SerializedName("configs")
         val configs: Configs? = null,
@@ -103,6 +107,34 @@ data class Form constructor(
             val regexpExplanation: String? = null
         ) : Parcelable
 
+        @Keep
+        @Parcelize
+        data class Info(
+            @SerializedName("extension")
+            val extension: Extension? = null,
+
+            @SerializedName("width")
+            val width: Int? = null,
+
+            @SerializedName("height")
+            val height: Int? = null,
+
+            @SerializedName("duration")
+            val duration: Long? = null,  // milliseconds
+
+            @SerializedName("date_added")
+            val dateAdded: Long? = null,  // milliseconds
+
+            @SerializedName("date_modified")
+            val dateModified: Long? = null,  // milliseconds
+
+            @SerializedName("date_taken")
+            val dateTaken: Long? = null,  // milliseconds
+
+            @SerializedName("size")
+            val size: Long? = null
+        ) : Parcelable
+
     }
 
     @Keep
@@ -115,8 +147,6 @@ data class Form constructor(
         val projectId: Long? = null
     ) : Parcelable
 
-    fun isFlexibleForm(): Boolean {
-        return isFlex == 1
-    }
+    fun isFlexibleForm(): Boolean = isFlex == 1
 
 }
