@@ -6,7 +6,7 @@ import android.os.Parcelable
 import android.text.Spanned
 import android.text.format.DateFormat
 import androidx.annotation.Keep
-import kotlinx.android.parcel.Parcelize
+import kotlinx.parcelize.Parcelize
 import kz.q19.domain.model.webrtc.WebRTCInfo
 import kz.q19.utils.html.HTMLCompat
 import java.util.*

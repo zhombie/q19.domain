@@ -4,7 +4,7 @@ package kz.q19.domain.model.webrtc
 
 import android.os.Parcelable
 import androidx.annotation.Keep
-import kotlinx.android.parcel.Parcelize
+import kotlinx.parcelize.Parcelize
 
 @Keep
 @Parcelize

@@ -7,10 +7,4 @@
     <string name="html_text">HTML мәтіні</string>
     <string name="file">Файл</string>
     <string name="text">Текст</string>
-
-    <string name="error_unknown">Unexpected error</string>
-    <string name="error_cannot_create_file">Can\'t create file</string>
-    <string name="error_invalid_output_file">Invalid output file</string>
-    <string name="error_read_permission_denied">Permission denied</string>
-    <string name="error_no_available_space">No available space!</string>
 </resources>

@@ -5,7 +5,7 @@ package kz.q19.domain.model
 import android.os.Parcelable
 import androidx.annotation.Keep
 import androidx.annotation.StringRes
-import kotlinx.android.parcel.Parcelize
+import kotlinx.parcelize.Parcelize
 import kz.q19.domain.R
 import kz.q19.utils.file.Extension
 
