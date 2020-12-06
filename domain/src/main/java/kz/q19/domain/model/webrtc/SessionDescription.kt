@@ -8,7 +8,7 @@ import kotlinx.android.parcel.Parcelize
 
 @Keep
 @Parcelize
-data class WebRTCSessionDescription constructor(
+data class SessionDescription constructor(
     val type: Type,
     val description: String
 ) : Parcelable {

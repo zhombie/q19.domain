@@ -8,7 +8,7 @@ import kotlinx.android.parcel.Parcelize
 
 @Keep
 @Parcelize
-data class WebRTC constructor(
+data class WebRTCInfo constructor(
     val type: Type,
     val sdp: String? = null,
     val id: String? = null,
@@ -16,6 +16,7 @@ data class WebRTC constructor(
     val candidate: String? = null
 ) : Parcelable {
 
+    @Keep
     enum class Type(val value: String) {
         START("start"),
         PREPARE("prepare"),
@@ -26,25 +27,23 @@ data class WebRTC constructor(
         HANGUP("hangup");
 
         companion object {
-            fun by(type: WebRTCSessionDescription.Type): Type {
+            fun by(type: SessionDescription.Type): Type {
                 return when (type) {
-                    WebRTCSessionDescription.Type.OFFER -> OFFER
-                    WebRTCSessionDescription.Type.ANSWER -> ANSWER
+                    SessionDescription.Type.OFFER -> OFFER
+                    SessionDescription.Type.ANSWER -> ANSWER
                 }
             }
 
-            fun by(type: String): WebRTCSessionDescription.Type? {
+            fun by(type: String): SessionDescription.Type? {
                 return when (type) {
-                    OFFER.value -> WebRTCSessionDescription.Type.OFFER
-                    ANSWER.value -> WebRTCSessionDescription.Type.ANSWER
+                    OFFER.value -> SessionDescription.Type.OFFER
+                    ANSWER.value -> SessionDescription.Type.ANSWER
                     else -> null
                 }
             }
         }
 
-        override fun toString(): String {
-            return value
-        }
+        override fun toString(): String = value
     }
 
 }

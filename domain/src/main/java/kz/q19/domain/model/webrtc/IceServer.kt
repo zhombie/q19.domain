@@ -9,7 +9,7 @@ import kotlinx.android.parcel.Parcelize
 
 @Keep
 @Parcelize
-data class WebRTCIceServer constructor(
+data class IceServer constructor(
     @SerializedName("url")
     val url: String?,
 

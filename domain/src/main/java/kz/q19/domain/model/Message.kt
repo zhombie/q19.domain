@@ -7,7 +7,7 @@ import android.text.Spanned
 import android.text.format.DateFormat
 import androidx.annotation.Keep
 import kotlinx.android.parcel.Parcelize
-import kz.q19.domain.model.webrtc.WebRTC
+import kz.q19.domain.model.webrtc.WebRTCInfo
 import kz.q19.utils.html.HTMLCompat
 import java.util.*
 
@@ -19,14 +19,14 @@ data class Message constructor(
     val text: String? = null,
     val replyMarkup: ReplyMarkup? = null,
     val media: Media? = null,
-    val attachments: List<Attachment>? = null,
+    val attachments: List<Media>? = null,
     val date: Calendar = now(),
 
     val category: Category? = null,
 
     val form: Form? = null,
 
-    val webRTC: WebRTC? = null,
+    val webRTCInfo: WebRTCInfo? = null,
 
     val action: Action? = null
 ) : Parcelable {
@@ -56,11 +56,11 @@ data class Message constructor(
         text: String? = null,
         replyMarkup: ReplyMarkup? = null,
         media: Media? = null,
-        attachments: List<Attachment>? = null,
+        attachments: List<Media>? = null,
         timestamp: Long? = null,
         category: Category? = null,
         form: Form? = null,
-        webRTC: WebRTC? =null,
+        webRTCInfo: WebRTCInfo? =null,
         action: Action? = null
     ) : this(
         id = id,
@@ -72,7 +72,7 @@ data class Message constructor(
         date = timestamp?.let { fromTimestamp(it) } ?: now(),
         category = category,
         form = form,
-        webRTC = webRTC,
+        webRTCInfo = webRTCInfo,
         action = action
     )
 

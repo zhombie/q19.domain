@@ -5,7 +5,7 @@ package kz.q19.domain.model.webrtc
 import androidx.annotation.Keep
 
 @Keep
-enum class WebRTCAdapterType(val bitMask: Int) {
+enum class AdapterType constructor(val bitMask: Int) {
     UNKNOWN(0),
     ETHERNET(1),
     WIFI(2),

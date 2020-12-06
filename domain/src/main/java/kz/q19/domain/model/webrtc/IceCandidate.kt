@@ -8,12 +8,12 @@ import kotlinx.android.parcel.Parcelize
 
 @Keep
 @Parcelize
-data class WebRTCIceCandidate constructor(
+data class IceCandidate constructor(
     val sdpMid: String,
     val sdpMLineIndex: Int,
     val sdp: String,
     val serverUrl: String? = null,
-    val adapterType: WebRTCAdapterType = WebRTCAdapterType.UNKNOWN,
+    val adapterType: AdapterType = AdapterType.UNKNOWN,
 ) : Parcelable {
 
     companion object {

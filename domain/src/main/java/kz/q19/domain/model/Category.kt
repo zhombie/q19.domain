@@ -50,6 +50,7 @@ data class Category constructor(
         if (id == other.id && parentId == other.parentId) return true
         return false
     }
+
     override fun hashCode(): Int {
         return super.hashCode()
     }
