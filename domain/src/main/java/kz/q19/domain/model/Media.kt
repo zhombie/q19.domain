@@ -12,10 +12,22 @@ import kz.q19.utils.file.Extension
 @Keep
 @Parcelize
 data class Media constructor(
+    val id: Int,
+    val type: Type? = null,
     val title: String? = null,
     val extension: Extension? = null,
-    val type: Type? = null,
+    val width: Int? = null,
+    val height: Int? = null,
+    val duration: Long? = null,  // milliseconds
+    val dateAdded: Long? = null,  // milliseconds
+    val dateModified: Long? = null,  // milliseconds
+    val dateTaken: Long? = null,  // milliseconds
+    val size: Long? = null,
+
+    // Server url path
     val urlPath: String? = null,
+
+    // Local file
     var file: File? = null
 ) : Parcelable {
 
@@ -42,5 +54,9 @@ data class Media constructor(
         } else {
             -1
         }
+
+    fun hasLocalFile(): Boolean {
+        return file?.get()?.exists() == true
+    }
 
 }
