@@ -46,7 +46,7 @@ data class Form constructor(
         val prompt: String? = null,
 
         @SerializedName("type")
-        val type: Type,
+        val type: Type? = null,
 
         @SerializedName("default")
         val default: String? = null,
@@ -64,11 +64,17 @@ data class Form constructor(
         val level: Int = 0,
 
         @SerializedName("value")
-        val value: String? = null
+        val value: String? = null,
+
+        @SerializedName("keyboard")
+        val keyboard: Keyboard? = null,
+
+        @SerializedName("condition")
+        val condition: Condition? = null,
     ) : Parcelable {
 
         @Keep
-        enum class Type(val value: String) {
+        enum class Type constructor(val value: String) {
             @SerializedName("text")
             TEXT("text"),
 
@@ -88,12 +94,15 @@ data class Form constructor(
             SELECT("select"),
 
             @SerializedName("boolean")
-            BOOLEAN("boolean")
+            BOOLEAN("boolean"),
+
+            @SerializedName("phone_number")
+            PHONE_NUMBER("phone_number")
         }
 
         @Keep
         @Parcelize
-        data class Configs(
+        data class Configs constructor(
             @SerializedName("must_filled")
             val isRequiredField: Boolean? = null,
 
@@ -109,7 +118,7 @@ data class Form constructor(
 
         @Keep
         @Parcelize
-        data class Info(
+        data class Info constructor(
             @SerializedName("extension")
             val extension: Extension? = null,
 
@@ -135,11 +144,40 @@ data class Form constructor(
             val size: Long? = null
         ) : Parcelable
 
+
+        @Keep
+        @Parcelize
+        data class Keyboard constructor(
+            @SerializedName("inline")
+            val inline: Boolean? = null,
+
+            @SerializedName("buttons")
+            val buttons: List<Button>? = null
+        ) : Parcelable {
+
+            @Keep
+            @Parcelize
+            data class Button constructor(
+                @SerializedName("text")
+                val text: String,
+
+                @SerializedName("payload")
+                val payload: String? = null
+            ) : Parcelable
+
+        }
+
+        @Keep
+        @Parcelize
+        data class Condition constructor(
+            val map: HashMap<String, String>? = null,
+        ) : Parcelable
+
     }
 
     @Keep
     @Parcelize
-    data class Configs(
+    data class Configs constructor(
         @SerializedName("assignee")
         val assignee: List<Long>? = null,
 

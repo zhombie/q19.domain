@@ -90,40 +90,6 @@ data class Message constructor(
         }
 
     @Keep
-    @Parcelize
-    data class ReplyMarkup constructor(
-        val rows: List<List<Button>> = emptyList()
-    ) : Parcelable {
-
-        @Keep
-        @Parcelize
-        data class Button constructor(
-            val text: String,
-            val callbackData: String? = null,
-            val url: String? = null
-        ) : Parcelable
-
-        fun getAllButtons(): List<Button> {
-            val buttons = mutableListOf<Button>()
-            rows.forEach {
-                it.forEach { button ->
-                    buttons.add(button)
-                }
-            }
-            return buttons
-        }
-
-        fun getColumnsCount(): Int {
-            return if (rows.isNullOrEmpty()) {
-                0
-            } else {
-                rows.first().size
-            }
-        }
-
-    }
-
-    @Keep
     enum class Type {
         OUTGOING,
         INCOMING,
@@ -138,7 +104,7 @@ data class Message constructor(
     }
 
     @Keep
-    enum class Action(val value: String) {
+    enum class Action constructor(val value: String) {
         CALL_ACCEPT("call_accept"),
         CALL_REDIAL("call_redial"),
         CALL_REDIRECT("call_redirect"),
