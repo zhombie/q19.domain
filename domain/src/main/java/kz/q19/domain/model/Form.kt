@@ -24,7 +24,7 @@ data class Form constructor(
     val prompt: String? = null,
 
     @SerializedName("fields")
-    val fields: List<Field> = emptyList(),
+    val fields: List<Field>? = null,
 
     @SerializedName("configs")
     val configs: Configs? = null
@@ -69,8 +69,8 @@ data class Form constructor(
         @SerializedName("keyboard")
         val keyboard: Keyboard? = null,
 
-        @SerializedName("condition")
-        val condition: Condition? = null,
+//        @SerializedName("condition")
+//        val condition: Condition? = null,
     ) : Parcelable {
 
         @Keep
@@ -152,7 +152,7 @@ data class Form constructor(
             val inline: Boolean? = null,
 
             @SerializedName("buttons")
-            val buttons: List<Button>? = null
+            val buttons: List<List<Button>>? = null
         ) : Parcelable {
 
             @Keep
