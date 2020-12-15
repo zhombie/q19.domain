@@ -103,8 +103,14 @@ data class Form constructor(
         @Keep
         @Parcelize
         data class Configs constructor(
-            @SerializedName("must_filled")
-            val isRequiredField: Boolean? = null,
+            @SerializedName("required")
+            val isRequired: Boolean? = null,
+
+            @SerializedName("multiple_selection")
+            val isMultipleSelection: Boolean? = null,
+
+            @SerializedName("max_selection_count")
+            val maxSelectionCount: Int? = null,
 
             @SerializedName("key")
             val key: String? = null,
