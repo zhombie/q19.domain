@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package kz.q19.domain.model
 
 import android.os.Parcelable
@@ -38,7 +40,7 @@ data class CallScope constructor(
     }
 
     @Keep
-    enum class Type(val value: String) {
+    enum class Type constructor(val value: String) {
         @SerializedName("folder")
         FOLDER("folder"),
 
@@ -47,7 +49,7 @@ data class CallScope constructor(
     }
 
     @Keep
-    enum class Action(val value: String) {
+    enum class Action constructor(val value: String) {
         @SerializedName("audio_call")
         AUDIO_CALL("audio_call"),
 
@@ -56,7 +58,7 @@ data class CallScope constructor(
     }
 
     @Keep
-    enum class ChatType(val value: String) {
+    enum class ChatType constructor(val value: String) {
         @SerializedName("audio")
         AUDIO("audio"),
 
@@ -72,7 +74,7 @@ data class CallScope constructor(
 
     @Keep
     @Parcelize
-    data class Details(
+    data class Details constructor(
         @SerializedName("order")
         val order: Int,
 
@@ -83,7 +85,13 @@ data class CallScope constructor(
         val style: String? = null,
 
         @SerializedName("subtitle")
-        val subtitle: String? = null
+        val subtitle: String? = null,
+
+        @SerializedName("form_id")
+        val formId: Long? = null,
+
+        @SerializedName("external_id")
+        val externalId: Long? = null
     ) : Parcelable
 
 }
