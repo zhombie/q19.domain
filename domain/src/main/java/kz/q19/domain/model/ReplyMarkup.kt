@@ -29,10 +29,10 @@ data class ReplyMarkup constructor(
     }
 
     fun getColumnsCount(): Int {
-        return if (rows.isNullOrEmpty()) {
-            0
+        return if (!rows.isNullOrEmpty()) {
+            rows.maxOf { it.size }
         } else {
-            rows.first().size
+            0
         }
     }
 

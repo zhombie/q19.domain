@@ -69,8 +69,11 @@ data class Form constructor(
         @SerializedName("keyboard")
         val keyboard: Keyboard? = null,
 
-//        @SerializedName("condition")
-//        val condition: Condition? = null,
+        @SerializedName("required")
+        val isRequired: Boolean? = null,
+
+        @SerializedName("conditions")
+        val conditions: Conditions? = null,
     ) : Parcelable {
 
         @Keep
@@ -175,9 +178,24 @@ data class Form constructor(
 
         @Keep
         @Parcelize
-        data class Condition constructor(
-            val map: HashMap<String, String>? = null,
-        ) : Parcelable
+        data class Conditions constructor(
+            @SerializedName("keyboard")
+            val keyboard: List<Condition>? = null,
+        ) : Parcelable {
+
+            @Keep
+            @Parcelize
+            data class Condition constructor(
+                @SerializedName("payload")
+                val payload: String? = null,
+
+                @SerializedName("next_step")
+                val nextStep: Int? = null
+            ) : Parcelable
+
+        }
+
+        fun isRequired(): Boolean = isRequired == true
 
     }
 
