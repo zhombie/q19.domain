@@ -109,6 +109,7 @@ data class Form constructor(
         @Keep
         @Parcelize
         data class Configs constructor(
+            @Deprecated("Moved to Form#Field.isRequired field")
             @SerializedName("required")
             val isRequired: Boolean? = null,
 
@@ -193,7 +194,13 @@ data class Form constructor(
                 val payload: String? = null,
 
                 @SerializedName("next_step")
-                val nextStep: Int? = null
+                val nextStep: Int? = null,
+
+                @SerializedName("show_steps")
+                val showSteps: List<Int>? = null,
+
+                @SerializedName("hide_steps")
+                val hideSteps: List<Int>? = null
             ) : Parcelable
 
         }
