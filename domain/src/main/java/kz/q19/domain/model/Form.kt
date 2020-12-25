@@ -27,10 +27,7 @@ data class Form constructor(
     val fields: List<Field>? = null,
 
     @SerializedName("configs")
-    val configs: Configs? = null,
-
-    @SerializedName("autofill")
-    val autofill: Autofill? = null
+    val configs: Configs? = null
 ) : Parcelable {
 
     @Keep
@@ -77,6 +74,9 @@ data class Form constructor(
 
         @SerializedName("conditions")
         val conditions: Conditions? = null,
+
+        @SerializedName("autofill")
+        val autofill: Autofill? = null
     ) : Parcelable {
 
         @Keep
