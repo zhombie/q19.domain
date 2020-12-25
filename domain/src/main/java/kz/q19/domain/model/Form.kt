@@ -205,6 +205,13 @@ data class Form constructor(
 
         }
 
+        @Keep
+        @Parcelize
+        data class Autofill constructor(
+            @SerializedName("qualifier")
+            val qualifier: String? = null
+        ) : Parcelable
+
         fun isRequired(): Boolean = isRequired ?: false
 
     }
@@ -217,13 +224,6 @@ data class Form constructor(
 
         @SerializedName("project_id")
         val projectId: Long? = null
-    ) : Parcelable
-
-    @Keep
-    @Parcelize
-    data class Autofill constructor(
-        @SerializedName("qualifier")
-        val qualifier: String? = null
     ) : Parcelable
 
     fun isFlexibleForm(): Boolean = isFlex == 1

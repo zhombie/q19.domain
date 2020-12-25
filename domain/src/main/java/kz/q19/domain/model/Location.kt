@@ -35,5 +35,11 @@ data class Location constructor(
     val speed: Float? = null,
 
     @SerializedName("speed_accuracy_meters_per_second")
-    val speedAccuracyMetersPerSecond: Float? = null
+    val speedAccuracyMetersPerSecond: Float? = null,
+
+    @SerializedName("elapsed_realtime_nanos")
+    val elapsedRealtimeNanos: Long? = null,
+
+    @SerializedName("elapsed_realtime_uncertainty_nanos")
+    val elapsedRealtimeUncertaintyNanos: Long? = null
 ) : Parcelable
