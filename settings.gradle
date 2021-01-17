@@ -1,4 +1,3 @@
-include ':data'
 include ':domain'
 include ':sample'
-rootProject.name = "core"
+rootProject.name = "domain"
