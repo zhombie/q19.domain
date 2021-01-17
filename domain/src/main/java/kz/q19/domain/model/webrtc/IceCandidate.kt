@@ -1,5 +1,3 @@
-@file:Suppress("unused")
-
 package kz.q19.domain.model.webrtc
 
 import android.os.Parcelable
