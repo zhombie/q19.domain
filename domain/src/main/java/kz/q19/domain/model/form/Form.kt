@@ -13,7 +13,7 @@ data class Form constructor(
     val title: String,
     val isFlexible: Boolean = false,
     val fields: List<Field>,
-    val configs: Configs
+    val configs: Configs? = null
 ) : Parcelable {
 
     @Keep
@@ -31,20 +31,21 @@ data class Form constructor(
         val keyboard: Keyboard? = null,
         val isRequired: Boolean = false,
         val conditions: Conditions? = null,
-        val autofill: Autofill? = null
+        val autofill: Autofill? = null,
+        val value: String? = null  // Value of the field
     ) : Parcelable {
 
         @Keep
         @Parcelize
-        enum class Type : Parcelable {
-            TEXT,
-            AUDIO,
-            IMAGE,
-            VIDEO,
-            FILE,
-            SELECT,
-            BOOLEAN,
-            PHONE_NUMBER
+        enum class Type constructor(val key: String) : Parcelable {
+            TEXT("text"),
+            IMAGE("image"),
+            AUDIO("audio"),
+            VIDEO("video"),
+            FILE("file"),
+            SELECT("select"),
+            BOOLEAN("boolean"),
+            PHONE_NUMBER("phone_number")
         }
 
         @Keep
