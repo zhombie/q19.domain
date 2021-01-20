@@ -11,6 +11,7 @@ import kz.q19.domain.model.keyboard.Keyboard
 data class Form constructor(
     val id: Long,
     val title: String,
+    val prompt: String? = null,
     val isFlexible: Boolean = false,
     val fields: List<Field>,
     val configs: Configs? = null
