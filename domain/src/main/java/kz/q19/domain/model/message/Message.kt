@@ -101,8 +101,13 @@ data class Message internal constructor(
             return id
         }
 
-        fun setId(id: String): Builder {
+        fun setId(id: String?): Builder {
             this.id = id
+            return this
+        }
+
+        fun resetId(): Builder {
+            this.id = Default.ID
             return this
         }
 
@@ -110,8 +115,13 @@ data class Message internal constructor(
             return type
         }
 
-        fun setType(type: Type): Builder {
+        fun setType(type: Type?): Builder {
             this.type = type
+            return this
+        }
+
+        fun resetType(): Builder {
+            this.type = null
             return this
         }
 
@@ -119,8 +129,13 @@ data class Message internal constructor(
             return text
         }
 
-        fun setText(text: String): Builder {
+        fun setText(text: String?): Builder {
             this.text = text
+            return this
+        }
+
+        fun resetText(): Builder {
+            this.text = Default.TEXT
             return this
         }
 
@@ -128,8 +143,13 @@ data class Message internal constructor(
             return keyboard
         }
 
-        fun setKeyboard(keyboard: Keyboard): Builder {
+        fun setKeyboard(keyboard: Keyboard?): Builder {
             this.keyboard = keyboard
+            return this
+        }
+
+        fun resetKeyboard(): Builder {
+            this.keyboard = Default.KEYBOARD
             return this
         }
 
@@ -137,8 +157,13 @@ data class Message internal constructor(
             return media
         }
 
-        fun setMedia(media: Media): Builder {
+        fun setMedia(media: Media?): Builder {
             this.media = media
+            return this
+        }
+
+        fun resetMedia(): Builder {
+            this.media = Default.MEDIA
             return this
         }
 
@@ -146,8 +171,13 @@ data class Message internal constructor(
             return attachments
         }
 
-        fun setAttachments(attachments: List<Media>): Builder {
+        fun setAttachments(attachments: List<Media>?): Builder {
             this.attachments = attachments
+            return this
+        }
+
+        fun resetAttachments(): Builder {
+            this.attachments = Default.ATTACHMENTS
             return this
         }
 
@@ -155,13 +185,28 @@ data class Message internal constructor(
             return createdAt
         }
 
-        fun setCreatedAt(createdAt: Long): Builder {
-            this.createdAt = createdAt
-            return this
+        fun setCreatedAt(createdAt: Long?): Builder {
+            return if (createdAt == null) {
+                this.createdAt = Default.CREATED_AT
+                this
+            } else {
+                this.createdAt = createdAt
+                this
+            }
         }
 
-        fun setCreatedAt(createdAt: Calendar): Builder {
-            this.createdAt = createdAt.timeInMillis
+        fun setCreatedAt(createdAt: Calendar?): Builder {
+            return if (createdAt == null) {
+                this.createdAt = Default.CREATED_AT
+                this
+            } else {
+                this.createdAt = createdAt.timeInMillis
+                this
+            }
+        }
+
+        fun resetCreatedAt(): Builder {
+            this.createdAt = Default.CREATED_AT
             return this
         }
 
