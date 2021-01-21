@@ -6,6 +6,6 @@ import kotlinx.parcelize.Parcelize
 
 @Keep
 @Parcelize
-open class Button constructor(
+open class Button internal constructor(
     open val text: String
 ) : Parcelable
