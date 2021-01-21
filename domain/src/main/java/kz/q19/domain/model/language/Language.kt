@@ -8,7 +8,7 @@ import java.util.*
 
 @Keep
 @Parcelize
-data class Language constructor(
+data class Language internal constructor(
     val key: String,
     val representation: String,
     val id: Long

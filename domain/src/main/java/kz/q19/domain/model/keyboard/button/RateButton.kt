@@ -6,7 +6,7 @@ import kotlinx.parcelize.Parcelize
 
 @Keep
 @Parcelize
-data class RatingButton constructor(
+data class RateButton constructor(
     override val text: String,
     val chatId: Long,
     val rating: Int

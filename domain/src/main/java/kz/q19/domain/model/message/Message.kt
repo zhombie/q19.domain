@@ -13,14 +13,14 @@ import java.util.*
 
 @Keep
 @Parcelize
-data class Message constructor(
-    val id: String? = null,
+data class Message internal constructor(
+    val id: String? = Default.ID,
     val type: Type,
-    val text: String? = null,
-    val keyboard: Keyboard? = null,
-    val media: Media? = null,
-    val attachments: List<Media>? = null,
-    val createdAt: Calendar = now(),
+    val text: String? = Default.TEXT,
+    val keyboard: Keyboard? = Default.KEYBOARD,
+    val media: Media? = Default.MEDIA,
+    val attachments: List<Media>? = Default.ATTACHMENTS,
+    val createdAt: Long = Default.CREATED_AT,
 ) : Parcelable {
 
     companion object {
@@ -37,28 +37,38 @@ data class Message constructor(
             return Calendar.getInstance()
         }
 
+        fun parseDate(timestamp: Long): String {
+            return parseDate(fromTimestamp(timestamp))
+        }
+
         fun parseDate(calendar: Calendar): String {
             return DateFormat.format("HH:MM", calendar).toString()
         }
     }
 
-    constructor(
-        id: String? = null,
-        type: Type,
-        text: String? = null,
-        keyboard: Keyboard? = null,
-        media: Media? = null,
-        attachments: List<Media>? = null,
-        timestamp: Long? = null
-    ) : this(
-        id = id,
-        type = type,
-        text = text?.trim(),
-        keyboard = keyboard,
-        media = media,
-        attachments = attachments,
-        createdAt = timestamp?.let { fromTimestamp(it) } ?: now()
-    )
+    @Keep
+    @Parcelize
+    enum class Type : Parcelable {
+        OUTGOING,
+        INCOMING,
+
+        NOTIFICATION,
+
+        TYPING,
+
+        CATEGORY,
+        CROSS_CHILDREN,
+        RESPONSE
+    }
+
+    private object Default {
+        val ID: String? = null
+        val TEXT: String? = null
+        val KEYBOARD: Keyboard? = null
+        val MEDIA: Media? = null
+        val ATTACHMENTS: List<Media>? = null
+        val CREATED_AT: Long = now().timeInMillis
+    }
 
     val time: String
         get() = parseDate(createdAt)
@@ -78,19 +88,95 @@ data class Message constructor(
             }
         }
 
-    @Keep
-    @Parcelize
-    enum class Type : Parcelable {
-        OUTGOING,
-        INCOMING,
+    class Builder {
+        private var id: String? = Default.ID
+        private var type: Type? = null
+        private var text: String? = Default.TEXT
+        private var keyboard: Keyboard? = Default.KEYBOARD
+        private var media: Media? = Default.MEDIA
+        private var attachments: List<Media>? = Default.ATTACHMENTS
+        private var createdAt: Long = Default.CREATED_AT
 
-        NOTIFICATION,
+        fun getId(): String? {
+            return id
+        }
 
-        TYPING,
+        fun setId(id: String): Builder {
+            this.id = id
+            return this
+        }
 
-        CATEGORY,
-        CROSS_CHILDREN,
-        RESPONSE
+        fun getType(): Type? {
+            return type
+        }
+
+        fun setType(type: Type): Builder {
+            this.type = type
+            return this
+        }
+
+        fun getText(): String? {
+            return text
+        }
+
+        fun setText(text: String): Builder {
+            this.text = text
+            return this
+        }
+
+        fun getKeyboard(): Keyboard? {
+            return keyboard
+        }
+
+        fun setKeyboard(keyboard: Keyboard): Builder {
+            this.keyboard = keyboard
+            return this
+        }
+
+        fun getMedia(): Media? {
+            return media
+        }
+
+        fun setMedia(media: Media): Builder {
+            this.media = media
+            return this
+        }
+
+        fun getAttachments(): List<Media>? {
+            return attachments
+        }
+
+        fun setAttachments(attachments: List<Media>): Builder {
+            this.attachments = attachments
+            return this
+        }
+
+        fun getCreatedAt(): Long {
+            return createdAt
+        }
+
+        fun setCreatedAt(createdAt: Long): Builder {
+            this.createdAt = createdAt
+            return this
+        }
+
+        fun setCreatedAt(createdAt: Calendar): Builder {
+            this.createdAt = createdAt.timeInMillis
+            return this
+        }
+
+        fun build(): Message {
+            return Message(
+                id = id,
+                type = requireNotNull(type) { "message.type cannot be null. Declare it at first" },
+                text = text,
+                keyboard = keyboard,
+                media = media,
+                attachments = attachments,
+                createdAt = createdAt
+            )
+        }
+
     }
 
 }

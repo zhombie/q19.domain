@@ -3,6 +3,7 @@ package kz.q19.domain.model.configs
 import android.os.Parcelable
 import androidx.annotation.Keep
 import kotlinx.parcelize.Parcelize
+import kz.q19.domain.model.call.CallType
 import kz.q19.domain.model.i18n.I18NString
 
 @Keep
@@ -48,12 +49,37 @@ data class Configs constructor(
 
     @Keep
     @Parcelize
-    open class Nestable constructor(
+    open class Nestable internal constructor(
         open val id: Long,
         open val parentId: Long,
         open val type: Type?,
+        open val title: I18NString,
         open val extra: Extra? = null
-    ) : Parcelable
+    ) : Parcelable {
+
+        companion object {
+            const val NO_PARENT_ID = 0L
+        }
+
+        @Keep
+        enum class Type {
+            LINK,
+            FOLDER
+        }
+
+        fun isParent(): Boolean {
+            return parentId == NO_PARENT_ID
+        }
+
+        fun isFolder(): Boolean {
+            return type == Type.FOLDER
+        }
+
+        fun isLink(): Boolean {
+            return type == Type.LINK
+        }
+
+    }
 
     @Keep
     @Parcelize
@@ -62,17 +88,22 @@ data class Configs constructor(
         override val parentId: Long,
         override val type: Type?,
         val callType: CallType? = null,
-        val title: I18NString,
         val scope: String? = null,
+        override val title: I18NString,
         override val extra: Extra? = null
-    ) : Nestable(id = id, parentId = parentId, type = type, extra = extra), Parcelable {
+    ) : Nestable(id = id, parentId = parentId, type = type, title = title, extra = extra), Parcelable {
 
-        @Keep
-        enum class CallType {
-            AUDIO,
-            VIDEO
+        fun isAudioCall(): Boolean {
+            return callType == CallType.AUDIO
         }
 
+        fun isVideoCall(): Boolean {
+            return callType == CallType.VIDEO
+        }
+
+        fun isMediaCall(): Boolean {
+            return isAudioCall() && isVideoCall()
+        }
     }
 
     @Keep
@@ -82,9 +113,9 @@ data class Configs constructor(
         override val parentId: Long,
         override val type: Type?,
         val serviceId: Long,
-        val title: I18NString,
+        override val title: I18NString,
         override val extra: Extra? = null
-    ) : Nestable(id = id, parentId = parentId, type = type, extra = extra), Parcelable
+    ) : Nestable(id = id, parentId = parentId, type = type, title = title, extra = extra), Parcelable
 
     @Keep
     @Parcelize
@@ -93,15 +124,9 @@ data class Configs constructor(
         override val parentId: Long,
         override val type: Type?,
         val formId: Long,
-        val title: I18NString,
+        override val title: I18NString,
         override val extra: Extra? = null
-    ) : Nestable(id = id, parentId = parentId, type = type, extra = extra),  Parcelable
-
-    @Keep
-    enum class Type {
-        LINK,
-        FOLDER
-    }
+    ) : Nestable(id = id, parentId = parentId, type = type, title = title, extra = extra),  Parcelable
 
     @Keep
     @Parcelize
