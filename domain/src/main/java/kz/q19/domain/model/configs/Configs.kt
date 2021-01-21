@@ -102,7 +102,7 @@ data class Configs constructor(
         }
 
         fun isMediaCall(): Boolean {
-            return isAudioCall() && isVideoCall()
+            return isAudioCall() || isVideoCall()
         }
     }
 
