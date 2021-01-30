@@ -108,6 +108,7 @@ data class Configs constructor(
         fun isVideoCall(): Boolean = callType == CallType.VIDEO
 
         fun isMediaCall(): Boolean = isAudioCall() || isVideoCall()
+
     }
 
     @Keep
