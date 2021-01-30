@@ -58,26 +58,36 @@ data class Configs constructor(
     ) : Parcelable {
 
         companion object {
-            const val NO_PARENT_ID = 0L
+            const val NO_PARENT_ID: Long = 0L
         }
 
         @Keep
-        enum class Type {
+        @Parcelize
+        data class Extra constructor(
+            val order: Int? = null,
+            val behavior: Behavior? = null
+        ) : Parcelable {
+
+            @Keep
+            @Parcelize
+            enum class Behavior : Parcelable {
+                REQUEST_LOCATION
+            }
+
+        }
+
+        @Keep
+        @Parcelize
+        enum class Type : Parcelable {
             LINK,
             FOLDER
         }
 
-        fun isParent(): Boolean {
-            return parentId == NO_PARENT_ID
-        }
+        fun isParent(): Boolean = parentId == NO_PARENT_ID
 
-        fun isFolder(): Boolean {
-            return type == Type.FOLDER
-        }
+        fun isFolder(): Boolean = type == Type.FOLDER
 
-        fun isLink(): Boolean {
-            return type == Type.LINK
-        }
+        fun isLink(): Boolean = type == Type.LINK
 
     }
 
@@ -93,17 +103,11 @@ data class Configs constructor(
         override val extra: Extra? = null
     ) : Nestable(id = id, parentId = parentId, type = type, title = title, extra = extra), Parcelable {
 
-        fun isAudioCall(): Boolean {
-            return callType == CallType.AUDIO
-        }
+        fun isAudioCall(): Boolean = callType == CallType.AUDIO
 
-        fun isVideoCall(): Boolean {
-            return callType == CallType.VIDEO
-        }
+        fun isVideoCall(): Boolean = callType == CallType.VIDEO
 
-        fun isMediaCall(): Boolean {
-            return isAudioCall() && isVideoCall()
-        }
+        fun isMediaCall(): Boolean = isAudioCall() || isVideoCall()
     }
 
     @Keep
@@ -126,12 +130,6 @@ data class Configs constructor(
         val formId: Long,
         override val title: I18NString,
         override val extra: Extra? = null
-    ) : Nestable(id = id, parentId = parentId, type = type, title = title, extra = extra),  Parcelable
-
-    @Keep
-    @Parcelize
-    data class Extra constructor(
-        val order: Int? = null
-    ) : Parcelable
+    ) : Nestable(id = id, parentId = parentId, type = type, title = title, extra = extra), Parcelable
 
 }
