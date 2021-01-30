@@ -24,8 +24,12 @@ data class Message internal constructor(
 ) : Parcelable {
 
     companion object {
-        fun fromTimestamp(timestamp: Long): Calendar {
-            val calendar = Calendar.getInstance()
+        fun fromTimestamp(
+            timestamp: Long,
+            timezone: TimeZone = TimeZone.getDefault(),
+            locale: Locale = Locale.getDefault()
+        ): Calendar {
+            val calendar = Calendar.getInstance(timezone, locale)
             if (timestamp == 0L) {
                 return calendar
             }
@@ -33,12 +37,19 @@ data class Message internal constructor(
             return calendar
         }
 
-        fun now(): Calendar {
-            return Calendar.getInstance()
+        fun now(
+            timezone: TimeZone = TimeZone.getDefault(),
+            locale: Locale = Locale.getDefault()
+        ): Calendar {
+            return Calendar.getInstance(timezone, locale)
         }
 
-        fun parseDate(timestamp: Long): String {
-            return parseDate(fromTimestamp(timestamp))
+        fun parseDate(
+            timestamp: Long,
+            timezone: TimeZone = TimeZone.getDefault(),
+            locale: Locale = Locale.getDefault()
+        ): String {
+            return parseDate(fromTimestamp(timestamp, timezone, locale))
         }
 
         fun parseDate(calendar: Calendar): String {
@@ -81,6 +92,7 @@ data class Message internal constructor(
                 return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                     Html.fromHtml(clearedText, Html.FROM_HTML_MODE_COMPACT)
                 } else {
+                    @Suppress("DEPRECATION")
                     Html.fromHtml(clearedText)
                 }
             } else {
