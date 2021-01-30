@@ -71,6 +71,8 @@ data class Configs constructor(
             @Keep
             @Parcelize
             enum class Behavior : Parcelable {
+                UNKNOWN,
+                REGULAR,
                 REQUEST_LOCATION
             }
 
