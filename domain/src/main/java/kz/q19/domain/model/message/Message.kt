@@ -21,13 +21,20 @@ data class Message internal constructor(
     val media: Media? = Default.MEDIA,
     val attachments: List<Media>? = Default.ATTACHMENTS,
     val createdAt: Long = Default.CREATED_AT,
+
+    // TODO: Refactor later
+    val category: Category? = null
 ) : Parcelable {
 
     companion object {
         fun fromTimestamp(
             timestamp: Long,
             timezone: TimeZone = TimeZone.getDefault(),
-            locale: Locale = Locale.getDefault()
+            locale: Locale = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                Locale.getDefault(Locale.Category.FORMAT)
+            } else {
+                Locale.getDefault()
+            }
         ): Calendar {
             val calendar = Calendar.getInstance(timezone, locale)
             if (timestamp == 0L) {
@@ -39,7 +46,11 @@ data class Message internal constructor(
 
         fun now(
             timezone: TimeZone = TimeZone.getDefault(),
-            locale: Locale = Locale.getDefault()
+            locale: Locale = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                Locale.getDefault(Locale.Category.FORMAT)
+            } else {
+                Locale.getDefault()
+            }
         ): Calendar {
             return Calendar.getInstance(timezone, locale)
         }
@@ -47,7 +58,11 @@ data class Message internal constructor(
         fun parseDate(
             timestamp: Long,
             timezone: TimeZone = TimeZone.getDefault(),
-            locale: Locale = Locale.getDefault()
+            locale: Locale = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                Locale.getDefault(Locale.Category.FORMAT)
+            } else {
+                Locale.getDefault()
+            }
         ): String {
             return parseDate(fromTimestamp(timestamp, timezone, locale))
         }
@@ -79,6 +94,7 @@ data class Message internal constructor(
         val MEDIA: Media? = null
         val ATTACHMENTS: List<Media>? = null
         val CREATED_AT: Long = now().timeInMillis
+        val CATEGORY: Category? = null
     }
 
     val time: String
@@ -108,6 +124,7 @@ data class Message internal constructor(
         private var media: Media? = Default.MEDIA
         private var attachments: List<Media>? = Default.ATTACHMENTS
         private var createdAt: Long = Default.CREATED_AT
+        private var category: Category? = Default.CATEGORY
 
         fun getId(): String? {
             return id
@@ -222,6 +239,20 @@ data class Message internal constructor(
             return this
         }
 
+        fun getCategory(): Category? {
+            return category
+        }
+
+        fun setCategory(category: Category): Builder {
+            this.category = category
+            return this
+        }
+
+        fun resetCategory(): Builder {
+            this.category = Default.CATEGORY
+            return this
+        }
+
         fun build(): Message {
             return Message(
                 id = id,
@@ -230,7 +261,8 @@ data class Message internal constructor(
                 keyboard = keyboard,
                 media = media,
                 attachments = attachments,
-                createdAt = createdAt
+                createdAt = createdAt,
+                category = category
             )
         }
 
