@@ -13,6 +13,8 @@ data class Configs constructor(
     val callAgent: CallAgent,
     val preferences: Preferences,
 
+    val contacts: Contacts? = null,
+
     val calls: List<Call>? = null,
     val services: List<Service>? = null,
     val forms: List<Form>? = null,
@@ -134,5 +136,38 @@ data class Configs constructor(
         override val title: I18NString,
         override val extra: Extra? = null
     ) : Nestable(id = id, parentId = parentId, type = type, title = title, extra = extra), Parcelable
+
+    @Keep
+    @Parcelize
+    data class Contacts constructor(
+        val phoneNumbers: List<PhoneNumber>? = null,
+        val socials: List<Social>? = null
+    ) : Parcelable {
+
+        @Keep
+        @Parcelize
+        data class Social constructor(val id: Id, val url: String) : Parcelable {
+
+            @Keep
+            @Parcelize
+            enum class Id(val id: String) : Parcelable {
+                FACEBOOK("fb"),
+                TELEGRAM("tg"),
+                TWITTER("tw"),
+                VK("vk")
+            }
+
+        }
+
+        @Keep
+        @Parcelize
+        data class PhoneNumber constructor(
+            val value: String,
+            val info: I18NString? = null,
+            val action: String? = null
+        ) : Parcelable
+
+    }
+
 
 }
