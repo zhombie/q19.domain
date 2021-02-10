@@ -7,8 +7,8 @@ import android.text.Spanned
 import android.text.format.DateFormat
 import androidx.annotation.Keep
 import kotlinx.parcelize.Parcelize
-import kz.q19.domain.model.media.Media
 import kz.q19.domain.model.keyboard.Keyboard
+import kz.q19.domain.model.media.Media
 import java.util.*
 
 @Keep
@@ -20,10 +20,7 @@ data class Message internal constructor(
     val keyboard: Keyboard? = Default.KEYBOARD,
     val media: Media? = Default.MEDIA,
     val attachments: List<Media>? = Default.ATTACHMENTS,
-    val createdAt: Long = Default.CREATED_AT,
-
-    // TODO: Refactor later
-    val category: Category? = null
+    val createdAt: Long = Default.CREATED_AT
 ) : Parcelable {
 
     companion object {
@@ -94,7 +91,6 @@ data class Message internal constructor(
         val MEDIA: Media? = null
         val ATTACHMENTS: List<Media>? = null
         val CREATED_AT: Long = now().timeInMillis
-        val CATEGORY: Category? = null
     }
 
     val time: String
@@ -124,7 +120,6 @@ data class Message internal constructor(
         private var media: Media? = Default.MEDIA
         private var attachments: List<Media>? = Default.ATTACHMENTS
         private var createdAt: Long = Default.CREATED_AT
-        private var category: Category? = Default.CATEGORY
 
         fun getId(): String? {
             return id
@@ -239,20 +234,6 @@ data class Message internal constructor(
             return this
         }
 
-        fun getCategory(): Category? {
-            return category
-        }
-
-        fun setCategory(category: Category): Builder {
-            this.category = category
-            return this
-        }
-
-        fun resetCategory(): Builder {
-            this.category = Default.CATEGORY
-            return this
-        }
-
         fun build(): Message {
             return Message(
                 id = id,
@@ -261,8 +242,7 @@ data class Message internal constructor(
                 keyboard = keyboard,
                 media = media,
                 attachments = attachments,
-                createdAt = createdAt,
-                category = category
+                createdAt = createdAt
             )
         }
 
