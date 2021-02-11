@@ -56,7 +56,7 @@ data class Media constructor(
         }
 
     fun hasLocalFile(): Boolean {
-        return file?.get()?.exists() == true
+        return file?.exists == true
     }
 
 }

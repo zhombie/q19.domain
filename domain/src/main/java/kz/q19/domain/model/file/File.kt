@@ -44,6 +44,9 @@ data class File constructor(
     val uri: Uri
         get() = Uri.fromFile(file)
 
+    val exists: Boolean
+        get() = file.exists()
+
     @IgnoredOnParcel
     var progress: Int = 0
         set(value) {
