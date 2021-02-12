@@ -38,7 +38,9 @@ android {
 }
 
 dependencies {
+    // Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
+    // Annotation
     implementation 'androidx.annotation:annotation:1.1.0'
 }
