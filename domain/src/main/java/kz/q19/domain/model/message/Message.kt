@@ -7,6 +7,7 @@ import android.text.Spanned
 import android.text.format.DateFormat
 import androidx.annotation.Keep
 import kotlinx.parcelize.Parcelize
+import kz.q19.domain.model.geo.Location
 import kz.q19.domain.model.keyboard.Keyboard
 import kz.q19.domain.model.media.Media
 import java.util.*
@@ -16,11 +17,13 @@ import java.util.*
 data class Message internal constructor(
     val id: String? = Default.ID,
     val type: Type,
+    val title: String? = Default.TITLE,
     val text: String? = Default.TEXT,
+    val createdAt: Long = Default.CREATED_AT,
     val keyboard: Keyboard? = Default.KEYBOARD,
     val media: Media? = Default.MEDIA,
     val attachments: List<Media>? = Default.ATTACHMENTS,
-    val createdAt: Long = Default.CREATED_AT
+    val location: Location? = Default.LOCATION
 ) : Parcelable {
 
     companion object {
@@ -75,22 +78,18 @@ data class Message internal constructor(
         OUTGOING,
         INCOMING,
 
-        NOTIFICATION,
-
-        TYPING,
-
-        CATEGORY,
-        CROSS_CHILDREN,
-        RESPONSE
+        NOTIFICATION
     }
 
     private object Default {
         val ID: String? = null
+        val TITLE: String? = null
         val TEXT: String? = null
+        val CREATED_AT: Long = now().timeInMillis
         val KEYBOARD: Keyboard? = null
         val MEDIA: Media? = null
         val ATTACHMENTS: List<Media>? = null
-        val CREATED_AT: Long = now().timeInMillis
+        val LOCATION: Location? = null
     }
 
     val time: String
@@ -115,11 +114,13 @@ data class Message internal constructor(
     class Builder {
         private var id: String? = Default.ID
         private var type: Type? = null
+        private var title: String? = Default.TITLE
         private var text: String? = Default.TEXT
+        private var createdAt: Long = Default.CREATED_AT
         private var keyboard: Keyboard? = Default.KEYBOARD
         private var media: Media? = Default.MEDIA
         private var attachments: List<Media>? = Default.ATTACHMENTS
-        private var createdAt: Long = Default.CREATED_AT
+        private var location: Location? = Default.LOCATION
 
         fun getId(): String? {
             return id
@@ -149,6 +150,20 @@ data class Message internal constructor(
             return this
         }
 
+        fun getTitle(): String? {
+            return title
+        }
+
+        fun setTitle(title: String?): Builder {
+            this.title = title
+            return this
+        }
+
+        fun resetTitle(): Builder {
+            this.title = Default.TITLE
+            return this
+        }
+
         fun getText(): String? {
             return text
         }
@@ -165,6 +180,35 @@ data class Message internal constructor(
 
         fun getKeyboard(): Keyboard? {
             return keyboard
+        }
+
+        fun getCreatedAt(): Long {
+            return createdAt
+        }
+
+        fun setCreatedAt(createdAt: Long?): Builder {
+            return if (createdAt == null) {
+                this.createdAt = Default.CREATED_AT
+                this
+            } else {
+                this.createdAt = createdAt
+                this
+            }
+        }
+
+        fun setCreatedAt(createdAt: Calendar?): Builder {
+            return if (createdAt == null) {
+                this.createdAt = Default.CREATED_AT
+                this
+            } else {
+                this.createdAt = createdAt.timeInMillis
+                this
+            }
+        }
+
+        fun resetCreatedAt(): Builder {
+            this.createdAt = Default.CREATED_AT
+            return this
         }
 
         fun setKeyboard(keyboard: Keyboard?): Builder {
@@ -205,32 +249,17 @@ data class Message internal constructor(
             return this
         }
 
-        fun getCreatedAt(): Long {
-            return createdAt
+        fun getLocation(): Location? {
+            return location
         }
 
-        fun setCreatedAt(createdAt: Long?): Builder {
-            return if (createdAt == null) {
-                this.createdAt = Default.CREATED_AT
-                this
-            } else {
-                this.createdAt = createdAt
-                this
-            }
+        fun setLocation(location: Location?): Builder {
+            this.location = location
+            return this
         }
 
-        fun setCreatedAt(createdAt: Calendar?): Builder {
-            return if (createdAt == null) {
-                this.createdAt = Default.CREATED_AT
-                this
-            } else {
-                this.createdAt = createdAt.timeInMillis
-                this
-            }
-        }
-
-        fun resetCreatedAt(): Builder {
-            this.createdAt = Default.CREATED_AT
+        fun resetLocation(): Builder {
+            this.location = Default.LOCATION
             return this
         }
 
@@ -239,10 +268,11 @@ data class Message internal constructor(
                 id = id,
                 type = requireNotNull(type) { "message.type cannot be null. Declare it at first" },
                 text = text,
+                createdAt = createdAt,
                 keyboard = keyboard,
                 media = media,
                 attachments = attachments,
-                createdAt = createdAt
+                location = location
             )
         }
 
