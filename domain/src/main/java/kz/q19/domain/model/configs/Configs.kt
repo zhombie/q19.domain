@@ -4,7 +4,10 @@ import android.os.Parcelable
 import androidx.annotation.Keep
 import kotlinx.parcelize.Parcelize
 import kz.q19.domain.model.call.CallType
+import kz.q19.domain.model.i18n.I18NId
 import kz.q19.domain.model.i18n.I18NString
+import kz.q19.domain.model.language.Language
+import java.util.*
 
 @Keep
 @Parcelize
@@ -132,7 +135,7 @@ data class Configs constructor(
         override val id: Long,
         override val parentId: Long,
         override val type: Type?,
-        val formId: Long,
+        val formId: I18NId,
         override val title: I18NString,
         override val extra: Extra? = null
     ) : Nestable(id = id, parentId = parentId, type = type, title = title, extra = extra), Parcelable
