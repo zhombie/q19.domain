@@ -11,7 +11,7 @@ import kz.q19.domain.model.file.File
 @Keep
 @Parcelize
 data class Media constructor(
-    val id: Int,
+    val id: String,
     val type: Type? = null,
     val title: String? = null,
     val extension: Extension? = null,
