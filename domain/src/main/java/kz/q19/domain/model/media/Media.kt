@@ -6,8 +6,9 @@ import androidx.annotation.StringRes
 import kotlinx.parcelize.Parcelize
 import kz.q19.domain.R
 import kz.q19.domain.model.file.Extension
-import kz.q19.domain.model.file.File
+import kz.q19.domain.model.file.LocalFile
 
+@Deprecated("Use Media2")
 @Keep
 @Parcelize
 data class Media constructor(
@@ -27,7 +28,7 @@ data class Media constructor(
     val urlPath: String? = null,
 
     // Local file
-    var file: File? = null
+    var file: LocalFile? = null
 ) : Parcelable {
 
     @Keep

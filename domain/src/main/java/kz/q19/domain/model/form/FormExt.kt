@@ -2,7 +2,7 @@ package kz.q19.domain.model.form
 
 import kz.q19.domain.model.media.Media
 
-fun Media.convert(): Form.Field.Type {
+fun Media.toFormFieldType(): Form.Field.Type {
     return when (type) {
         Media.Type.IMAGE -> Form.Field.Type.IMAGE
         Media.Type.AUDIO -> Form.Field.Type.AUDIO

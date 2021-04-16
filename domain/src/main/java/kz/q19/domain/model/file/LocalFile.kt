@@ -10,10 +10,11 @@ import java.io.File
 
 @Keep
 @Parcelize
-data class File constructor(
+data class LocalFile constructor(
     private val file: File
 ) : Parcelable {
 
+    @Deprecated("Inapplicable attribute")
     @Keep
     enum class DownloadStatus {
         NONE,
@@ -47,6 +48,7 @@ data class File constructor(
     val exists: Boolean
         get() = file.exists()
 
+    @Deprecated("Inapplicable attribute")
     @IgnoredOnParcel
     var progress: Int = 0
         set(value) {
@@ -58,6 +60,7 @@ data class File constructor(
             }
         }
 
+    @Deprecated("Inapplicable attribute")
     @IgnoredOnParcel
     var downloadStatus: DownloadStatus = DownloadStatus.NONE
         set(value) {

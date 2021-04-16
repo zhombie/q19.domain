@@ -10,6 +10,7 @@ import kotlinx.parcelize.Parcelize
 import kz.q19.domain.model.geo.Location
 import kz.q19.domain.model.keyboard.Keyboard
 import kz.q19.domain.model.media.Media
+import kz.q19.domain.model.media.Media2
 import java.util.*
 
 @Keep
@@ -22,7 +23,8 @@ data class Message internal constructor(
     val createdAt: Long = Default.CREATED_AT,
     val keyboard: Keyboard? = Default.KEYBOARD,
     val media: Media? = Default.MEDIA,
-    val attachments: List<Media>? = Default.ATTACHMENTS,
+    val media2: Media2? = Default.MEDIA2,
+    val attachments: List<Media2>? = Default.ATTACHMENTS,
     val location: Location? = Default.LOCATION
 ) : Parcelable {
 
@@ -88,7 +90,8 @@ data class Message internal constructor(
         val CREATED_AT: Long = now().timeInMillis
         val KEYBOARD: Keyboard? = null
         val MEDIA: Media? = null
-        val ATTACHMENTS: List<Media>? = null
+        val MEDIA2: Media2? = null
+        val ATTACHMENTS: List<Media2>? = null
         val LOCATION: Location? = null
     }
 
@@ -119,7 +122,8 @@ data class Message internal constructor(
         private var createdAt: Long = Default.CREATED_AT
         private var keyboard: Keyboard? = Default.KEYBOARD
         private var media: Media? = Default.MEDIA
-        private var attachments: List<Media>? = Default.ATTACHMENTS
+        private var media2: Media2? = Default.MEDIA2
+        private var attachments: List<Media2>? = Default.ATTACHMENTS
         private var location: Location? = Default.LOCATION
 
         fun getId(): String? {
@@ -235,11 +239,25 @@ data class Message internal constructor(
             return this
         }
 
-        fun getAttachments(): List<Media>? {
+        fun getMedia2(): Media2? {
+            return media2
+        }
+
+        fun setMedia2(media2: Media2?): Builder {
+            this.media2 = media2
+            return this
+        }
+
+        fun resetMedia2(): Builder {
+            this.media2 = Default.MEDIA2
+            return this
+        }
+
+        fun getAttachments(): List<Media2>? {
             return attachments
         }
 
-        fun setAttachments(attachments: List<Media>?): Builder {
+        fun setAttachments(attachments: List<Media2>?): Builder {
             this.attachments = attachments
             return this
         }
@@ -271,6 +289,7 @@ data class Message internal constructor(
                 createdAt = createdAt,
                 keyboard = keyboard,
                 media = media,
+                media2 = media2,
                 attachments = attachments,
                 location = location
             )
