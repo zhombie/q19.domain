@@ -42,7 +42,7 @@ data class Media constructor(
 
     val representation: Int
         @StringRes
-        get() = if (type == Type.FILE) {
+        get() = if (type == Type.DOCUMENT || type == Type.FILE) {
             when (extension) {
                 Extension.TXT -> R.string.text_file
                 Extension.DOC, Extension.DOCX -> R.string.microsoft_word_document
