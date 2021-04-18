@@ -43,6 +43,7 @@ data class Form constructor(
             IMAGE("image"),
             AUDIO("audio"),
             VIDEO("video"),
+            DOCUMENT("document"),
             FILE("file"),
             SELECT("select"),
             BOOLEAN("boolean"),
@@ -52,11 +53,19 @@ data class Form constructor(
         @Keep
         @Parcelize
         data class Configs constructor(
-            val isMultipleSelection: Boolean = false,
-            val maxSelectionCount: Int = 0,
+            // Local media selection
+            val isMultipleSelection: Boolean? = null,
+            val maxSelectionCount: Int? = null,
+
             val key: String? = null,
+
+            // Input text validation
             val regexp: String? = null,
-            val regexpExplanation: String? = null
+            val regexpExplanation: String? = null,
+
+            // Input text constraints
+            val inputTextMaxLength: Int? = null,
+            val inputTextMaxLines: Int? = null
         ) : Parcelable
 
         @Keep
@@ -104,7 +113,8 @@ data class Form constructor(
                 USER_FULL_NAME,
                 USER_IIN,
                 USER_EMAIL,
-                USER_PHONE_NUMBER
+                USER_PHONE_NUMBER,
+                USER_GEOLOCATION
             }
 
         }
