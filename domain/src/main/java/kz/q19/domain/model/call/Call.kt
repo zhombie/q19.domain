@@ -13,21 +13,21 @@ open class Call private constructor(
 ) : AnyCall(), Parcelable {
 
     @Parcelize
-    internal data class Text constructor(
+    data class Text constructor(
         override val id: Long,
         override val title: String,
         override val topic: String? = null
     ) : Call(id, title, topic), Parcelable
 
     @Parcelize
-    internal data class Audio constructor(
+    data class Audio constructor(
         override val id: Long,
         override val title: String,
         override val topic: String? = null
     ) : Call(id, title, topic), Parcelable
 
     @Parcelize
-    internal data class Video constructor(
+    data class Video constructor(
         override val id: Long,
         override val title: String,
         override val topic: String? = null
