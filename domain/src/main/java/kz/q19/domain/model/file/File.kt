@@ -33,7 +33,7 @@ data class File constructor(
         get() = file.nameWithoutExtension
 
     val extension: Extension?
-        get() = findEnumBy { it.value == file.extension }
+        get() = findEnumBy { it.value == file.extension.lowercase() }
 
     val path: String
         get() = file.path
