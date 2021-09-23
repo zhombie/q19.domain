@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="kz.q19.domain">
+    package="kz.q19.domain.sample">
 
     <application
         android:allowBackup="true"

@@ -1,4 +1,4 @@
-package kz.q19.domain
+package kz.q19.domain.sample
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
