@@ -1,12 +1,14 @@
 plugins {
     id 'com.android.library'
 
+    id 'maven-publish'
+
     id 'kotlin-android'
 
     id 'kotlin-parcelize'
-
-    id 'maven-publish'
 }
+
+group = 'com.github.zhombie.q19.domain'
 
 android {
     compileSdkVersion 30
