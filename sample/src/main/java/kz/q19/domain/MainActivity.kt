@@ -1,7 +1,7 @@
-package kz.q19.domain.sample
+package kz.q19.domain
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import kz.q19.domain.model.user.User
 
 class MainActivity : AppCompatActivity() {
