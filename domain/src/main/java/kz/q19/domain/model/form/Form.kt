@@ -3,7 +3,7 @@ package kz.q19.domain.model.form
 import android.os.Parcelable
 import androidx.annotation.Keep
 import kotlinx.parcelize.Parcelize
-import kz.q19.domain.model.file.Extension
+import kz.garage.file.extension.Extension
 import kz.q19.domain.model.keyboard.Keyboard
 
 @Keep

@@ -9,7 +9,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val user = User(-1, "qwrety123")
+        val user = User(-1, "qwerty123")
         println(user)
     }
 }

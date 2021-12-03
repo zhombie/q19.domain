@@ -5,7 +5,6 @@ import android.os.Parcelable
 import androidx.annotation.Keep
 import kotlinx.parcelize.IgnoredOnParcel
 import kotlinx.parcelize.Parcelize
-import kz.q19.domain.utils.findEnumBy
 import java.io.File
 
 @Keep
@@ -31,9 +30,6 @@ data class File constructor(
 
     val nameWithoutExtension: String
         get() = file.nameWithoutExtension
-
-    val extension: Extension?
-        get() = findEnumBy { it.value == file.extension.lowercase() }
 
     val path: String
         get() = file.path

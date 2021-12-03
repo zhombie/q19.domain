@@ -4,8 +4,8 @@ import android.os.Parcelable
 import androidx.annotation.Keep
 import androidx.annotation.StringRes
 import kotlinx.parcelize.Parcelize
+import kz.garage.file.extension.Extension
 import kz.q19.domain.R
-import kz.q19.domain.model.file.Extension
 import kz.q19.domain.model.file.File
 
 @Keep
