@@ -4,6 +4,10 @@ android {
     }
 }
 
+ext {
+    garage_version = '1.0.8'
+}
+
 dependencies {
     // Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
@@ -12,5 +16,5 @@ dependencies {
     implementation 'androidx.annotation:annotation:1.3.0'
 
     // File Extension
-    implementation 'com.github.zhombie.garage:file-extension:1.0.2'
+    implementation "com.github.zhombie.garage:file-extension:$garage_version"
 }
