@@ -3,7 +3,7 @@ package kz.q19.domain.model.configs
 import android.os.Parcelable
 import androidx.annotation.Keep
 import kotlinx.parcelize.Parcelize
-import kz.q19.domain.model.call.CallType
+import kz.q19.domain.model.call.type.CallType
 import kz.q19.domain.model.i18n.I18NId
 import kz.q19.domain.model.i18n.I18NString
 

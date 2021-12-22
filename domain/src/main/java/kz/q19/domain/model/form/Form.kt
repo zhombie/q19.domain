@@ -53,10 +53,11 @@ data class Form constructor(
         @Keep
         @Parcelize
         data class Configs constructor(
-            // Local media selection
+            // Multiple-choice or local media selection
             val isMultipleSelection: Boolean? = null,
             val maxSelectionCount: Int? = null,
 
+            // Select identifier
             val key: String? = null,
 
             // Input text validation
@@ -110,6 +111,7 @@ data class Form constructor(
                 UNKNOWN,
                 USER_FIRST_NAME,
                 USER_LAST_NAME,
+                USER_PATRONYMIC,
                 USER_FULL_NAME,
                 USER_IIN,
                 USER_EMAIL,

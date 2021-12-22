@@ -8,6 +8,7 @@ import kz.garage.file.extension.Extension
 import kz.q19.domain.R
 import kz.q19.domain.model.file.File
 
+// TODO: Divide into separate classes, like Image, Audio, which would inherit base Media class
 @Keep
 @Parcelize
 data class Media constructor(
