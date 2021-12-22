@@ -1,4 +1,4 @@
-package kz.q19.domain.model.message
+package kz.q19.domain.model.message.qrtc
 
 import android.os.Parcelable
 import androidx.annotation.Keep

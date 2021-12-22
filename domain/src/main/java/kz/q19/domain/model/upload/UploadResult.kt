@@ -6,7 +6,7 @@ import kotlinx.parcelize.Parcelize
 
 @Keep
 @Parcelize
-data class Upload constructor(
+data class UploadResult constructor(
     val hash: String,
     val title: String,
     val url: String

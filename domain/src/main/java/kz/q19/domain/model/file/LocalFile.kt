@@ -3,38 +3,23 @@ package kz.q19.domain.model.file
 import android.net.Uri
 import android.os.Parcelable
 import androidx.annotation.Keep
-import kotlinx.parcelize.IgnoredOnParcel
 import kotlinx.parcelize.Parcelize
-import kz.q19.domain.utils.findEnumBy
 import java.io.File
 
+@JvmInline
 @Keep
 @Parcelize
-data class LocalFile constructor(
+value class LocalFile constructor(
     private val file: File
 ) : Parcelable {
 
-    @Deprecated("Inapplicable attribute")
-    @Keep
-    enum class DownloadStatus {
-        NONE,
-        PENDING,
-        ERROR,
-        COMPLETED
-    }
-
-    fun get(): File {
-        return file
-    }
+    fun get(): File = file
 
     val name: String
         get() = file.name
 
     val nameWithoutExtension: String
         get() = file.nameWithoutExtension
-
-    val extension: Extension?
-        get() = findEnumBy { it.value == file.extension }
 
     val path: String
         get() = file.path
@@ -45,33 +30,8 @@ data class LocalFile constructor(
     val uri: Uri
         get() = Uri.fromFile(file)
 
-    val exists: Boolean
-        get() = file.exists()
+    fun isExist(): Boolean = file.exists()
 
-    @Deprecated("Inapplicable attribute")
-    @IgnoredOnParcel
-    var progress: Int = 0
-        set(value) {
-            field = value
-            if (value == 100) {
-                downloadStatus = DownloadStatus.COMPLETED
-            } else if (value in 1..99) {
-                downloadStatus = DownloadStatus.PENDING
-            }
-        }
-
-    @Deprecated("Inapplicable attribute")
-    @IgnoredOnParcel
-    var downloadStatus: DownloadStatus = DownloadStatus.NONE
-        set(value) {
-            if (value == DownloadStatus.NONE) {
-                field = value
-                return
-            } else if (field == DownloadStatus.COMPLETED) {
-                return
-            }
-            if (field == value) return
-            field = value
-        }
+    fun delete(): Boolean = file.delete()
 
 }

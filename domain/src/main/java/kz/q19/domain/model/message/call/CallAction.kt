@@ -1,4 +1,4 @@
-package kz.q19.domain.model.message
+package kz.q19.domain.model.message.call
 
 import android.os.Parcelable
 import androidx.annotation.Keep

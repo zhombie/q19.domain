@@ -3,7 +3,6 @@ package kz.q19.domain.model.language
 import android.os.Parcelable
 import androidx.annotation.Keep
 import kotlinx.parcelize.Parcelize
-import kz.q19.domain.utils.findEnumBy
 import java.util.*
 
 @Keep
@@ -66,7 +65,12 @@ data class Language internal constructor(
 
         companion object {
             fun by(value: Long) : ID {
-                return findEnumBy { it.value == value } ?: RU
+                return when (value) {
+                    KK.value -> KK
+                    RU.value -> RU
+                    EN.value -> EN
+                    else -> RU
+                }
             }
         }
     }

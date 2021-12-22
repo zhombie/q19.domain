@@ -1,16 +1,18 @@
-package kz.q19.domain.model.knowledge_base
+package kz.q19.domain.model.knowledge_base.response
 
 import android.os.Parcelable
 import androidx.annotation.Keep
 import kotlinx.parcelize.Parcelize
+import kz.q19.domain.model.knowledge_base.response.base.BaseResponse
 import kz.q19.domain.model.media.Media2
 
 @Parcelize
 @Keep
-data class ResponseInfo constructor(
-    val id: String,
-    val text: String,
-    val time: Long,
+data class Response constructor(
+    val id: Long,
+    val messageId: String? = null,
+    val text: String? = null,
+    val time: Long = -1L,
     val attachments: List<Media2> = emptyList(),
     val form: Form? = null
 ) : BaseResponse(), Parcelable {

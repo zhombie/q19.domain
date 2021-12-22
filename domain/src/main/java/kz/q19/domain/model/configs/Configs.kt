@@ -3,11 +3,9 @@ package kz.q19.domain.model.configs
 import android.os.Parcelable
 import androidx.annotation.Keep
 import kotlinx.parcelize.Parcelize
-import kz.q19.domain.model.call.CallType
+import kz.q19.domain.model.call.type.CallType
 import kz.q19.domain.model.i18n.I18NId
 import kz.q19.domain.model.i18n.I18NString
-import kz.q19.domain.model.language.Language
-import java.util.*
 
 @Keep
 @Parcelize
@@ -157,7 +155,8 @@ data class Configs constructor(
                 FACEBOOK("fb"),
                 TELEGRAM("tg"),
                 TWITTER("tw"),
-                VK("vk")
+                VK("vk"),
+                WHATSAPP("whatsapp")
             }
 
         }
@@ -171,6 +170,5 @@ data class Configs constructor(
         ) : Parcelable
 
     }
-
 
 }
