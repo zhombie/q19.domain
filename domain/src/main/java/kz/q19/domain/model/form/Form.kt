@@ -30,6 +30,7 @@ data class Form constructor(
         val configs: Configs? = null,
         val level: Int = 0,
         val keyboard: Keyboard? = null,
+        val options: List<Option>? = null,  // Multiple-selection options
         val isRequired: Boolean = false,
         val conditions: Conditions? = null,
         val autofill: Autofill? = null,
@@ -84,6 +85,16 @@ data class Form constructor(
 
         @Keep
         @Parcelize
+        data class Option constructor(
+            val id: Long,
+            val title: String,
+            val parentId: Long? = null,
+            val key: String,
+            val value: String? = null
+        ) : Parcelable
+
+        @Keep
+        @Parcelize
         data class Conditions constructor(
             val keyboard: List<Condition>? = null,
         ) : Parcelable {
@@ -118,9 +129,7 @@ data class Form constructor(
                 USER_PHONE_NUMBER,
                 USER_GEOLOCATION
             }
-
         }
-
     }
 
     @Keep
