@@ -151,7 +151,7 @@ data class Configs constructor(
 
             @Keep
             @Parcelize
-            enum class Id(val id: String) : Parcelable {
+            enum class Id constructor(val id: String) : Parcelable {
                 FACEBOOK("fb"),
                 TELEGRAM("tg"),
                 TWITTER("tw"),
