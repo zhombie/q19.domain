@@ -44,21 +44,24 @@ data class Language internal constructor(
     }
 
     @Keep
-    enum class Key constructor(val value: String) {
+    @Parcelize
+    enum class Key constructor(val value: String) : Parcelable {
         KK("kk"),
         RU("ru"),
         EN("en")
     }
 
     @Keep
-    enum class Representation constructor(val value: String) {
+    @Parcelize
+    enum class Representation constructor(val value: String) : Parcelable {
         KK("Қаз"),
         RU("Рус"),
         EN("Eng")
     }
 
     @Keep
-    enum class ID constructor(val value: Long) {
+    @Parcelize
+    enum class ID constructor(val value: Long) : Parcelable {
         KK(2),
         RU(1),
         EN(3);
@@ -84,8 +87,6 @@ data class Language internal constructor(
     val locale: Locale
         get() = Locale(key)
 
-    override fun toString(): String {
-        return key
-    }
+    override fun toString(): String = key
 
 }

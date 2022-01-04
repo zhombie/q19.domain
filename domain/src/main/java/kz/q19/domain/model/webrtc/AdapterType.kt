@@ -1,9 +1,12 @@
 package kz.q19.domain.model.webrtc
 
+import android.os.Parcelable
 import androidx.annotation.Keep
+import kotlinx.parcelize.Parcelize
 
 @Keep
-enum class AdapterType constructor(val bitMask: Int) {
+@Parcelize
+enum class AdapterType constructor(val bitMask: Int) : Parcelable {
     UNKNOWN(0),
     ETHERNET(1),
     WIFI(2),

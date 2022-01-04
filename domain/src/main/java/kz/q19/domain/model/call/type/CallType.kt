@@ -1,9 +1,12 @@
 package kz.q19.domain.model.call.type
 
+import android.os.Parcelable
 import androidx.annotation.Keep
+import kotlinx.parcelize.Parcelize
 
 @Keep
-enum class CallType constructor(private val value: String) {
+@Parcelize
+enum class CallType constructor(private val value: String) : Parcelable {
     TEXT("text"),
     AUDIO("audio"),
     VIDEO("video");

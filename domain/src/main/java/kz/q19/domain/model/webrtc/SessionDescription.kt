@@ -12,7 +12,8 @@ data class SessionDescription constructor(
 ) : Parcelable {
 
     @Keep
-    enum class Type {
+    @Parcelize
+    enum class Type : Parcelable {
         OFFER,
         ANSWER
     }

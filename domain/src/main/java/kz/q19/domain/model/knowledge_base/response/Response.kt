@@ -6,8 +6,8 @@ import kotlinx.parcelize.Parcelize
 import kz.q19.domain.model.knowledge_base.response.base.BaseResponse
 import kz.q19.domain.model.media.Media
 
-@Parcelize
 @Keep
+@Parcelize
 data class Response constructor(
     val id: Long,
     val messageId: String? = null,
@@ -17,8 +17,8 @@ data class Response constructor(
     val form: Form? = null
 ) : BaseResponse(), Parcelable {
 
-    @Parcelize
     @Keep
+    @Parcelize
     data class Form constructor(
         val id: Long,
         val title: String,
