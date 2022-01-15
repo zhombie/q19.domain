@@ -19,6 +19,7 @@ data class Configs constructor(
     val calls: List<Call>? = null,
     val services: List<Service>? = null,
     val forms: List<Form>? = null,
+    val websites: List<Website>? = null
 ) : Parcelable {
 
     @Keep
@@ -134,6 +135,17 @@ data class Configs constructor(
         override val parentId: Long,
         override val type: Type?,
         val formId: I18NId,
+        override val title: I18NString,
+        override val extra: Extra? = null
+    ) : Nestable(id = id, parentId = parentId, type = type, title = title, extra = extra), Parcelable
+
+    @Keep
+    @Parcelize
+    data class Website constructor(
+        override val id: Long,
+        override val parentId: Long,
+        override val type: Type?,
+        val url: String,
         override val title: I18NString,
         override val extra: Extra? = null
     ) : Nestable(id = id, parentId = parentId, type = type, title = title, extra = extra), Parcelable
