@@ -8,6 +8,5 @@ enum class ContentType constructor(val key: String) : Parcelable {
     IMAGE("image"),
     VIDEO("video"),
     AUDIO("audio"),
-    DOCUMENT("document"),
-    FILE("file")
+    DOCUMENT("document")
 }

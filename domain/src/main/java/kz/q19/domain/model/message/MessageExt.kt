@@ -4,9 +4,10 @@ import android.os.Build
 import android.text.Html
 import android.text.Spanned
 import android.text.format.DateFormat
+import kz.garage.chat.model.Message
 import java.util.*
 
-val kz.garage.chat.model.Message.asHTMLText: Spanned?
+val Message.asHTMLText: Spanned?
     get() = if (body.isNullOrBlank()) {
         null
     } else {
@@ -19,7 +20,7 @@ val kz.garage.chat.model.Message.asHTMLText: Spanned?
         }
     }
 
-fun kz.garage.chat.model.Message.getDisplayCreatedAt(
+fun Message.getDisplayCreatedAt(
     inFormat: String = "HH:MM",
     locale: Locale = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
         Locale.getDefault(Locale.Category.FORMAT)

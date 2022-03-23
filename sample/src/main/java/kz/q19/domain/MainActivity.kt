@@ -2,7 +2,7 @@ package kz.q19.domain
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import kz.q19.domain.model.keyboard.button.TextButton
+import kz.garage.chat.model.reply_markup.button.TextButton
 
 class MainActivity : AppCompatActivity() {
 

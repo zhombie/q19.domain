@@ -3,8 +3,8 @@ package kz.q19.domain.model.form
 import android.os.Parcelable
 import androidx.annotation.Keep
 import kotlinx.parcelize.Parcelize
+import kz.garage.chat.model.reply_markup.ReplyMarkup
 import kz.garage.file.extension.Extension
-import kz.q19.domain.model.keyboard.Keyboard
 
 @Keep
 @Parcelize
@@ -29,7 +29,7 @@ data class Form constructor(
         val info: Info? = null,
         val configs: Configs? = null,
         val level: Int = 0,
-        val keyboard: Keyboard? = null,
+        val replyMarkup: ReplyMarkup? = null,
         val options: List<Option>? = null,  // Multiple-selection options
         val isRequired: Boolean = false,
         val conditions: Conditions? = null,

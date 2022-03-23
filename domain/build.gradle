@@ -17,6 +17,6 @@ dependencies {
 
     // Garage (SDK)
     api "com.github.zhombie.garage:chat:$garage_version"
-    api "com.github.zhombie.garage:multimedia-store:$garage_version"
     api "com.github.zhombie.garage:file-extension:$garage_version"
+    api "com.github.zhombie.garage:multimedia-store:$garage_version"
 }
